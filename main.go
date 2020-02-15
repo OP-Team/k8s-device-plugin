@@ -37,7 +37,7 @@ func getAllPlugins() []*NvidiaDevicePlugin {
 }
 
 func main() {
-	log.Println("Loading NVML")
+	log.Println("Loading NVML")   //首先加載nvml庫，如果沒有問題進行下一步，有問題則報錯
 	if err := nvml.Init(); err != nil {
 		log.Printf("Failed to initialize NVML: %s.", err)
 		log.Printf("If this is a GPU node, did you set the docker default runtime to `nvidia`?")
@@ -88,7 +88,7 @@ restart:
 	}
 
 	if started == 0 {
-		log.Println("No devices found. Waiting indefinitely.")
+		log.Println("No devices found. Waiting indefinitely.") //獲得當前宿主機設備數量，若爲0則log出等待信息
 	}
 
 events:
